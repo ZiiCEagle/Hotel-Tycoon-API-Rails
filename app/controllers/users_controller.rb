@@ -6,6 +6,10 @@ class UsersController < ApplicationController
   def index
     @users = User.all
 
+    if params[:is_activated]
+      @users = @users.where(is_activated: params[:is_activated])
+    end
+
     render json: @users
   end
 
