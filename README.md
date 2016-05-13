@@ -20,6 +20,21 @@ $ rake db:migrate
 $ rails server
 ```
 
+## Environnement de production
+
+L'application est disponible à l'adresse : [https://aqueous-ravine-34742.herokuapp.com](https://aqueous-ravine-34742.herokuapp.com)
+
+
+### Déploiement
+
+Heroku est utilisé pour héberger l'API.
+Le déploiement est automatique depuis Github.
+Pour forcer un déploiement :
+
+```
+$ git push heroku master
+```
+
 ## Liens utiles
 
 Aide pour l'installation : [http://installrails.com](http://installrails.com)
