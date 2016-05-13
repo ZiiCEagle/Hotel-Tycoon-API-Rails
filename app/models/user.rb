@@ -3,9 +3,6 @@ class User < ApplicationRecord
   has_secure_password
 
   validates_presence_of :first_name, :last_name
-  validates :password,
-            presence: true,
-            length: {minimum: 8}
   validates :username,
             presence: true,
             uniqueness: true
