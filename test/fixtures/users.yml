@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+ash:
+  id: 1
+  username: Ash
+  email: Ash
+  first_name: Ash
+  last_name: Ash
+  password_digest: password
+  is_activated: 1
+  auth_token: 123456
+
+tim:
+  id: 2
+  username: Timmer
+  email: timmer@gmail.com
+  first_name: Timmer
+  last_name: Timmer
+  password_digest: password
+  is_activated: 0
+  auth_token: 123456789
