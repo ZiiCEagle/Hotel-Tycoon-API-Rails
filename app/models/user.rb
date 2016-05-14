@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   before_create :set_auth_token
+  after_create :user_created_notification
+
   has_secure_password
 
   validates_presence_of :first_name, :last_name
@@ -22,5 +24,9 @@ private
       token = SecureRandom.hex
       break token unless self.class.exists?(auth_token: token)
     end
+  end
+
+  def user_created_notification
+    UserMailer.user_created(self).deliver
   end
 end
