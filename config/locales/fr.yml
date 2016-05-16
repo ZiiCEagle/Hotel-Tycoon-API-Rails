@@ -1,0 +1,11 @@
+fr:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              blank: "Le mot de passe ne peut pas être vide."
+              too_short: "Le mot de passe doit faire au moins %{count} caractères"
+            password_confirmation:
+              confirmation: "Le mot de passe de confirmation n'est pas valide"
