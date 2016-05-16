@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   before_create :set_auth_token
   after_create :user_created_notification
+  after_update :password_reset_notification
 
   has_secure_password
 
@@ -11,6 +12,12 @@ class User < ApplicationRecord
 
   def self.activated
     where(is_activated: 1)
+  end
+
+  def set_reset_password_token
+    self.reset_password_token = generate_reset_password_token
+    self.reset_password_token_expires_at = Time.zone.now + 60 * 30
+    self.save
   end
 
 private
@@ -26,7 +33,18 @@ private
     end
   end
 
+  def generate_reset_password_token
+    loop do
+      token = SecureRandom.hex
+      break token unless self.class.exists?(reset_password_token: token)
+    end
+  end
+
   def user_created_notification
     UserMailer.user_created(self).deliver
+  end
+
+  def password_reset_notification
+    PasswordResetMailer.reset_password_email(self).deliver if self.reset_password_token_changed?
   end
 end
