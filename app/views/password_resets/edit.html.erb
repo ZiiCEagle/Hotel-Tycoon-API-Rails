@@ -1,0 +1,22 @@
+<div class="page-header">
+  <h1>Réinitialisation du mot de passe de <%= user_info(@user) %></h1>
+  <p class="lead">Vous pouvez redéfinir votre mot de passe dans le formulaire ci-dessous.</p>
+</div>
+
+<%= render 'errors', user: @user %>
+
+<%= form_for @user, url: {action: 'update'}, html: {method: :put} do |user| %>
+  <div class="form-group <%= 'has-error' if @user.errors.messages[:password].present? %>">
+    <%= user.label :password, "Nouveau mot de passe" %><br />
+    <%= user.password_field :password, placeholder: "Nouveau mot de passe", class: 'form-control' %>
+  </div>
+
+  <div class="form-group <%= 'has-error' if @user.errors.messages[:password_confirmation].present? %>">
+    <%= user.label :password_confirmation, "Confirmation du nouveau mot de passe" %><br />
+    <%= user.password_field :password_confirmation, placeholder: "Confirmation du nouveau mot de passe", class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= user.submit "Confirmer", class: 'btn btn-primary' %>
+  </div>
+<% end %>
