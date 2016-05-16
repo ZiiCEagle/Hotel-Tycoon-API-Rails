@@ -9,6 +9,8 @@ class User < ApplicationRecord
   validates :username,
             presence: true,
             uniqueness: true
+  validates :password,
+            length: { minimum: 8 }
 
   def self.activated
     where(is_activated: 1)
