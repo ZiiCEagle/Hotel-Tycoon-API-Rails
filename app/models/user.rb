@@ -1,16 +1,17 @@
 class User < ApplicationRecord
   before_create :set_auth_token
   after_create :user_created_notification
-  after_update :password_reset_notification
+  before_save :password_reset_notification, if: :reset_password_token_changed?
 
   has_secure_password
 
-  validates_presence_of :first_name, :last_name
+  validates_presence_of :first_name, :last_name, :email
+  validates :password,
+            length: { minimum: 8 },
+            unless: :reset_password_token_changed?
   validates :username,
             presence: true,
             uniqueness: true
-  validates :password,
-            length: { minimum: 8 }
 
   def self.activated
     where(is_activated: 1)
@@ -47,6 +48,6 @@ private
   end
 
   def password_reset_notification
-    PasswordResetMailer.reset_password_email(self).deliver if self.reset_password_token_changed?
+    PasswordResetMailer.reset_password_email(self).deliver
   end
 end
