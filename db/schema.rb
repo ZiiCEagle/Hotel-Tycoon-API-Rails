@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160510130847) do
+ActiveRecord::Schema.define(version: 20160516075410) do
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
@@ -20,9 +20,11 @@ ActiveRecord::Schema.define(version: 20160510130847) do
     t.string   "email"
     t.string   "first_name"
     t.string   "last_name"
-    t.boolean  "is_activated",    default: true
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.boolean  "is_activated",                    default: true
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_token_expires_at"
   end
 
 end
