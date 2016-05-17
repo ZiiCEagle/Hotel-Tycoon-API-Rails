@@ -22,7 +22,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create user" do
     assert_difference('User.count') do
-      post users_url, { user: { username: "nouveau", first_name: "nouveau", last_name: "nouveau", email: "nouveau", password: "nouveau" } }, {'Authorization' => token_header(@ash.auth_token)}
+      post users_url, { user: { username: "nouveau", first_name: "nouveau", last_name: "nouveau", email: "nouveau", password: "password" } }, {'Authorization' => token_header(@ash.auth_token)}
     end
 
     assert_response 201
