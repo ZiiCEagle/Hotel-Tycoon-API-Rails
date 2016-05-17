@@ -2,11 +2,10 @@ require 'test_helper'
 
 class PasswordResetMailerTest < ActionMailer::TestCase
   test "reset_password_email" do
-    mail = PasswordResetMailer.reset_password_email
-    assert_equal "Reset password email", mail.subject
-    assert_equal ["to@example.org"], mail.to
+    @tim = users(:tim)
+    mail = PasswordResetMailer.reset_password_email(@tim)
+    assert_equal "Demande de réinitialisation du mot de passe", mail.subject
     assert_equal ["from@example.com"], mail.from
-    assert_match "Hi", mail.body.encoded
+    assert_equal [@tim.email], mail.to
   end
-
 end
