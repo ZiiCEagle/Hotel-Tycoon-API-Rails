@@ -3,12 +3,14 @@
 ash:
   id: 1
   username: Ash
-  email: Ash
+  email: ash@gmail.com
   first_name: Ash
   last_name: Ash
   password_digest: password
   is_activated: 1
-  auth_token: 123456
+  auth_token: 123456A77F
+  reset_password_token: 005cfa215ddz9d531cdf1076c479b9456e
+  reset_password_token_expires_at: <%= Time.zone.now + 60 * 30 %>
 
 tim:
   id: 2
@@ -19,3 +21,5 @@ tim:
   password_digest: password
   is_activated: 0
   auth_token: 123456789
+  reset_password_token: 005cfa215d9d531cdf1076c479b9456e
+  reset_password_token_expires_at: <%= Time.zone.now + 60 * 30 %>
