@@ -1,0 +1,9 @@
+<div class="page-header">
+  <h1>Réinitialisation du mot de passe</h1>
+</div>
+
+<% if notice %>
+  <div class="alert alert-<%= notice['context'] %>" role="alert">
+    <strong><%= notice['title'] %></strong> <%= notice['content'] %>
+  </div>
+<% end %>
