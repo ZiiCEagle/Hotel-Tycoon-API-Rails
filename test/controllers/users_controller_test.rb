@@ -6,10 +6,6 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     @tim = users(:tim)
   end
 
-  def token_header(token)
-    ActionController::HttpAuthentication::Token.encode_credentials(token)
-  end
-
   test "should get index" do
     get users_url, {}, {'Authorization' => token_header(@ash.auth_token)}
     assert_response :success
