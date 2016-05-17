@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_and_belongs_to_many :roles
+
   before_create :set_auth_token
   after_create :user_created_notification
   before_save :password_reset_notification, if: "reset_password_token_changed?", unless: "reset_password_token.nil?"
