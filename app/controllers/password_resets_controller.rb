@@ -8,7 +8,7 @@ class PasswordResetsController < ApplicationController
     @user = User.find_by_email!(params[:email])
 
     @user.set_reset_password_token
-    render json: {messages: ["Email envoyé"]}, status: :ok
+    render json: {notice: "Email envoyé"}, status: :ok
   end
 
   def edit
