@@ -10,7 +10,8 @@ class User < ApplicationRecord
   validates_presence_of :first_name, :last_name, :email
   validates :password,
             length: { minimum: 8 },
-            unless: :reset_password_token_changed?
+            if: "password.present?",
+            unless: :reset_password_token_changed? # Si le reset password token ne change pas
   validates :username,
             presence: true,
             uniqueness: true
