@@ -13,13 +13,6 @@ class UsersController < ApplicationController
     render json: @users
   end
 
-  def mail
-    @user = User.find(1)
-    respond_to do |format|
-      format.html { render @user }
-    end
-  end
-
   # GET /users/1
   def show
     render json: @user
