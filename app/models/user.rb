@@ -26,6 +26,10 @@ class User < ApplicationRecord
     self.save
   end
 
+  def as_json(options = {})
+    super(options.merge({ except: [:password_digest, :created_at, :updated_at, :reset_password_token, :reset_password_token_expires_at] }))
+  end
+
 private
   def set_auth_token
     return if auth_token.present?
