@@ -22,7 +22,7 @@ $ rails server
 
 ## Environnement de production
 
-L'application est disponible à l'adresse : [https://aqueous-ravine-34742.herokuapp.com](https://aqueous-ravine-34742.herokuapp.com)
+L'application est disponible à l'adresse : [http://dry-wildwood-55915.herokuapp.com/](http://dry-wildwood-55915.herokuapp.com/)
 
 
 ### Déploiement
