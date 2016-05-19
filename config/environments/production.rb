@@ -85,4 +85,15 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.action_mailer.default_url_options = { host: 'http://dry-wildwood-55915.herokuapp.com/' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :user_name => 'b57ee98b81e093',
+    :password => '544913c989fbd7',
+    :address => 'mailtrap.io',
+    :domain => 'mailtrap.io',
+    :port => '2525',
+    :authentication => :cram_md5
+  }
 end
