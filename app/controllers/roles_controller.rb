@@ -1,10 +1,9 @@
 class RolesController < ApplicationController
   before_action :set_role, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:index]
 
   def index
     @roles = Role.all
-
-    @user = User.find(params[:user_id]) if params[:user_id]
 
     if @user
       return render json: @user.roles
@@ -43,6 +42,10 @@ class RolesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_role
       @role = Role.find(params[:id])
+    end
+
+    def set_user
+      @user = User.find(params[:user_id]) if params[:user_id]
     end
 
     # Only allow a trusted parameter "white list" through.
