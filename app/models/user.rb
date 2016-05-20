@@ -27,7 +27,10 @@ class User < ApplicationRecord
   end
 
   def as_json(options = {})
-    super(options.merge({ except: [:password_digest, :created_at, :updated_at, :reset_password_token, :reset_password_token_expires_at] }))
+    super(options.merge({
+      except: [ :password_digest, :created_at, :updated_at, :reset_password_token, :reset_password_token_expires_at ],
+      include: { roles: { only: [:id, :name] }}
+    }))
   end
 
 private
