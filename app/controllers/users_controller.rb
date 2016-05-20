@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :update, :destroy]
+  before_action :set_user, only: [:show, :update, :destroy, :attach_role]
   before_action :authenticate, except: [:login]
 
   # GET /users
@@ -41,6 +41,16 @@ class UsersController < ApplicationController
   # DELETE /users/1
   def destroy
     @user.destroy
+  end
+
+  def attach_role
+    @role = Role.find(params[:role_id])
+
+    unless @user.roles.include?(@role)
+       @user.roles << @role
+    end
+
+    render json: @user, status: :ok
   end
 
   def login
