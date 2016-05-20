@@ -32,3 +32,24 @@ User.create(
   password: "password",
   auth_token: "3167332618"
 )
+
+Role.create([
+  {
+    name: 'Directeur'
+  },
+  {
+    name: 'Responsable de service'
+  },
+  {
+    name: 'Manager'
+  },
+  {
+    name: "responsable d'accueil"
+  },
+  {
+    name: 'Commis'
+  },
+  {
+    name: 'Chef'
+  }
+])
