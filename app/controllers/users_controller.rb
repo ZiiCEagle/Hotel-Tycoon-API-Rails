@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :update, :destroy, :attach_role]
+  before_action :set_user, only: [:show, :update, :destroy, :attach_role, :detach_role]
   before_action :authenticate, except: [:login]
 
   # GET /users
@@ -49,6 +49,13 @@ class UsersController < ApplicationController
     unless @user.roles.include?(@role)
        @user.roles << @role
     end
+
+    render json: @user, status: :ok
+  end
+
+  def detach_role
+    @role = Role.find(params[:role_id])
+    @user.roles.delete(@role)
 
     render json: @user, status: :ok
   end
