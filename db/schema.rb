@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160517100910) do
+ActiveRecord::Schema.define(version: 20160621091019) do
+
+  create_table "bedroom_types", force: :cascade do |t|
+    t.string   "name"
+    t.float    "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
