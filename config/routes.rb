@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :customers
   patch 'users/:id/attach_role', to: 'users#attach_role'
   patch 'users/:id/detach_role', to: 'users#detach_role'
   resources :bedrooms, except: [:edit, :new]
