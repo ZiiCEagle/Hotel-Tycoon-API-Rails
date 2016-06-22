@@ -1,4 +1,5 @@
 class BedroomsController < ApplicationController
+  before_action :authenticate
   before_action :set_bedroom, only: [:show, :edit, :update, :destroy]
 
   # GET /bedrooms
