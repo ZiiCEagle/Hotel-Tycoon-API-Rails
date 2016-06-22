@@ -7,4 +7,11 @@ class Bedroom < ApplicationRecord
   validates :beds,
             presence: true,
             numericality: true
+
+  def as_json(options = {})
+    super(options.merge({
+      include: { bedroomType: { only: [:id, :name] }}
+    }))
+  end
+
 end
