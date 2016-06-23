@@ -1,5 +1,9 @@
 class Bedroom < ApplicationRecord
   belongs_to :bedroomType
+
+  has_one :reservation
+  has_one :customer, through: :reservation
+
   validates :number,
             presence: true,
             uniqueness: true,
