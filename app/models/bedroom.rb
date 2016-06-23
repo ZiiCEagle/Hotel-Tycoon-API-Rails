@@ -14,7 +14,11 @@ class Bedroom < ApplicationRecord
 
   def as_json(options = {})
     super(options.merge({
-      include: { bedroomType: { only: [:id, :name] }}
+      include: {
+        bedroomType: { only: [:id, :name] },
+        customer: {},
+        reservation: {}
+      }
     }))
   end
 
